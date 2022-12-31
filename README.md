@@ -39,4 +39,37 @@ server {
 
 其中`http://127.0.0.1:1251`是容器启动的地址。
 
+# 开发
+
+确保本机是node16的环境或者直接使用[Docker Dev Environment](https://open.docker.com/dashboard/dev-envs?url=https://github.com/ecator/ipmsg-web)，然后安装依赖：
+
+```
+npm i
+```
+
+如果需要编译直接运行下面命令：
+
+```
+npm run build
+```
+
+启动服务器：
+
+```
+# 直接默认参数启动
+node server.js
+
+# 查看服务器启动参数，可以指定监听地址和端口等
+node server.js --help
+```
+
+# 参考
+
+- [Vue.js](https://cn.vuejs.org/guide/quick-start.html)
+- [Vite](https://cn.vitejs.dev/guide/)
+- [Element Plus](https://element-plus.org/zh-CN/)
+
+
+
+
 
