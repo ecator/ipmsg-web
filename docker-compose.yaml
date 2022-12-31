@@ -1,0 +1,8 @@
+services:
+  app:
+    image: "ecat/ipmsg-web:${BUILD_TAG:-latest}"
+    build:
+      context: .
+    ports:
+      - "1251:1251/tcp"
+    restart: always
