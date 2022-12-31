@@ -111,7 +111,7 @@ function msgScrollToBottom() {
             @click="$emit('sendMsg', inputMsg)">Send</el-button>
         </div>
         <div class="copyright-area">
-          <div id="author"><span>Created by &nbsp;</span><img :src="githubIcon" /><a href="https://github.com/ecator"
+          <div id="author"><span>Created by &nbsp;</span><img :src="githubIcon" /><a href="https://github.com/ecator/ipmsg-web"
               target="_blank">Martin</a></div>
         </div>
       </el-footer>
