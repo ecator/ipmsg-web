@@ -58,7 +58,7 @@ function getClientAddr(req) {
 wss.on('connection', (ws, req) => {
     // connection is established
     ws.addr = getClientAddr(req)
-    console.log(`WebSocket connection established from ${ws.addr}`);
+    console.log(`connected from ${ws.addr}`);
 
     // listen for messages
     ws.on('message', (message) => {
@@ -88,7 +88,7 @@ wss.on('connection', (ws, req) => {
 
     // listen for disconnected
     ws.on('close', () => {
-        console.log(`Disconnected from ${ws.addr}`)
+        console.log(`disconnected from ${ws.addr}`)
         // 通知所有客户端删除该地址
         wss.clients.forEach((client) => {
             if (client.readyState === WebSocket.OPEN) {
