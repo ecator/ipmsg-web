@@ -16,6 +16,7 @@ if (args.help) {
         --port  listen port default is 1251
         --dist  static(frontend web) directory default is dist
     `)
+    process.exit(0)
 }
 
 let dist = args.dist
