@@ -114,3 +114,22 @@ server.listen(args.port, args.addr, () => {
     console.log(`listening on ${args.addr}:${args.port}`)
     console.log(`dist: ${dist}`)
 })
+
+
+process.on('SIGTERM', ExitProcess)
+process.on('SIGINT', ExitProcess)
+
+/**
+ * 优雅退出程序
+ *
+ * @param {string} sig 接收到的信号
+ */
+function ExitProcess(sig) {
+    console.log(`receive ${sig}`)
+    if (server) {
+        server.close(() => {
+            console.log('close server')
+            process.exit(0)
+        })
+    }
+}
