@@ -5,7 +5,7 @@ WORKDIR /APP
 COPY public public
 COPY src src
 COPY index.html .
-COPY package*.json .
+COPY package*.json ./
 COPY server.js .
 COPY vite.config.js .
 
