@@ -6,15 +6,19 @@ import WebSocket, { WebSocketServer } from 'ws'
 import http from 'http'
 import Msg from './src/beans/Msg.js'
 
-let args = minimist(process.argv.slice(2), { default: { addr: "0.0.0.0", port: "1251", dist: 'dist' } })
+const DEFAULT_ADDR = "127.0.0.1"
+const DEFAULT_PORT = "1251"
+const DEFAULT_DIST = "dist"
+
+let args = minimist(process.argv.slice(2), { default: { addr: DEFAULT_ADDR, port: DEFAULT_PORT, dist: DEFAULT_DIST } })
 //console.log(args)
 
 if (args.help) {
     console.log(`
     usage node server.js [--addr address --port port --dist dist]
-        --addr  listen address default is 0.0.0.0
-        --port  listen port default is 1251
-        --dist  static(frontend web) directory default is dist
+        --addr  listen address default is ${DEFAULT_ADDR}
+        --port  listen port default is ${DEFAULT_PORT}
+        --dist  static files(frontend web) directory default is ${DEFAULT_DIST}
     `)
     process.exit(0)
 }
@@ -35,7 +39,7 @@ const app = express()
 const server = http.createServer(app)
 const wss = new WebSocketServer({ server })
 // 使用 static 中间件处理静态文件
-app.use(express.static('dist'))
+app.use(express.static(dist))
 
 
 /**
