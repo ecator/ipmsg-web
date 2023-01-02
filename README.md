@@ -16,6 +16,9 @@ docker run -d -p 1251:1251 ecat/ipmsg-web
 如果用nginx代理，那么为了能正常获取到客户端IP和端口需要做如下配置：
 
 ```nginx
+upstream ipmsg-web {
+  server 127.0.0.1:1251;
+}
 server {
   listen 80;
   server_name ipmsg-web;
@@ -24,7 +27,7 @@ server {
   location / {
     proxy_set_header x-forwarded-for $proxy_add_x_forwarded_for;
     proxy_set_header x-forwarded-port $remote_port;
-    proxy_pass http://127.0.0.1:1251;
+    proxy_pass http://ipmsg-web;
   }
   location /ws {
     proxy_http_version 1.1;
@@ -32,12 +35,12 @@ server {
     proxy_set_header connection "upgrade";
     proxy_set_header x-forwarded-for $proxy_add_x_forwarded_for;
     proxy_set_header x-forwarded-port $remote_port;
-    proxy_pass http://127.0.0.1:1251;
+    proxy_pass http://ipmsg-web;
   }
 }
 ```
 
-其中`http://127.0.0.1:1251`是容器启动的地址。
+其中`upstream ipmsg-web`里面的`http://127.0.0.1:1251`是容器启动的地址。
 
 # 开发
 
