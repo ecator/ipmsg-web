@@ -7,7 +7,7 @@
 直接使用docker运行下面命令即可：
 
 ```
-docker run -d -p 1251:1251 ecat/ipmsg-web
+docker run -d -p 1251:1251 ecat/ipmsg-web --addr 0.0.0.0
 ```
 
 然后打开`http://server-ip:1251`即可。
